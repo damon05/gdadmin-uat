@@ -1,0 +1,56 @@
+<table class="tableBox" border="1" >
+    <thead>
+    <tr>
+        <th></th>
+        <th>浏览量（PV）</th>
+        <th>访客数（UV）</th>
+        <th>IP数</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="item in pvs">
+        <th>{{item.name}}</th>
+        <td>{{item.pv}}</td>
+        <td>{{item.uv}}</td>
+        <td>{{item.ips}}</td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="search_report">
+    <div class="search_report_spe">开始时间：<input type="date" class="width100" ng-model="bdate"/></div>
+    <div class="search_report_spe">结束时间：<input type="date" class="width100" ng-model="edata"/></div>
+    <div class="search_report_item width35 {{bgc1}}" ng-click="getType('h');">按时</div>
+    <div class="search_report_item width35 {{bgc2}}" ng-click="getType('d');">按日</div>
+    <div class="search_report_item width35 {{bgc3}}" ng-click="getType('m');">按月</div>
+
+    <button class="btnGreen" ng-click="getReportData();">查询</button>
+</div>
+
+<div class="mt10" id="container">
+
+</div>
+
+<table class="tableBox other" border="1" >
+    <thead>
+        <tr>
+            <th>时间</th>
+            <th>浏览量（PV）</th>
+            <th>访客数（UV）</th>
+            <th>IP数</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr ng-repeat="x in tData">
+            <td>{{x.name}}</td>
+            <td>{{x.pv}}</td>
+            <td>{{x.uv}}</td>
+            <td>{{x.ips}}</td>
+        </tr>
+    </tbody>
+</table>
+<div class="pagingContainer clearfix">
+    <paging get-url="getUrl" callback-fn="directiveCallBack"></paging>
+</div>

@@ -1,0 +1,69 @@
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label>公众账号名称：</label>
+        <input type="text" placeholder="公众账号名称" class="width150" ng-model="OfficalName" />
+    </div>
+    <div class="left mr15">
+        <label>公众账号：</label>
+        <input type="text" placeholder="公众账号" class="width150" ng-model="OfficalCode" />
+    </div>
+    <div class="left mr15">
+        <label>状态：</label>
+        <select class="width140" ng-model="State" ng-options="m.code as m.name for m in wxStatus"></select>
+    </div>
+</div>
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label>验证状态：</label>
+        <select class="width140" ng-model="VerifyState" ng-options="m.code as m.name for m in wxStatus"></select>
+    </div>
+    <div class="left">
+        <button class="btnGreen ml65" ng-click="search();">查询</button>
+        <button ng-show="showAddBtn.show" class="btnGreen" ng-click="create();">添加公众账号</button>
+    </div>
+</div>
+
+<div class="grayLine"></div>
+
+<table class="tableBox" border="1">
+    <thead>
+    <tr>        
+        <th>公众账号名称</th>
+        <th>操作</th>
+        <th>公众账号</th>
+        <th>AppID</th>
+        <th>AppSecret</th>
+        <th>账号级别</th>
+        <th>状态</th>
+        <th>验证状态</th>
+        <th>账号类型</th>
+        <th>更新时间</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="item in List">        
+        <td style="word-wrap:break-word;" width="15%">{{item.OfficalName}}</td>
+        <td style="word-wrap:break-word;" width="10%">            
+            <button ng-click="edit(item);"  style="width:30px;">修改</button>
+            <button ng-click="editMenu(item);"  style="width:50px;">编辑菜单</button>     
+            <button ng-click="publish(item);" style="width:30px;">发布</button>      
+        </td>    
+        <td style="word-wrap:break-word;" width="10%">{{item.OfficalCode}}</td>
+        <td style="word-wrap: break-word; word-break: break-all;" width="8%">{{item.AppID}}</td>
+        <td style="word-wrap: break-word; word-break: break-all;" width="10%">{{item.AppSecret}}</td>
+        <td style="word-wrap:break-word;" width="5%" ng-if="item.Category==1">订阅号</td>
+        <td style="word-wrap:break-word;" width="5%" ng-if="item.Category==2">服务号</td>
+        <td style="word-wrap:break-word;" width="5%">{{ConertStatusName(item.State)}}</td>
+        <td style="word-wrap:break-word;" width="5%">{{ConertVerifyStateName(item.VerifyState)}}</td>        
+        <td style="word-wrap:break-word;" width="5%" ng-if="item.AccountType==1">学校</td>
+        <td style="word-wrap:break-word;" width="5%" ng-if="item.AccountType==2">公司</td>
+        <td style="word-wrap:break-word;" width="10%">{{item.ModifyTime}}</td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="pagingContainer clearfix">
+    <paging get-url="getUrl" callback-fn="directiveCallBack"></paging>
+</div>

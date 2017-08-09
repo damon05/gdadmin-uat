@@ -1,0 +1,40 @@
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label>分类名称：</label>
+        <input type="text" placeholder="分类名称" class="width150" ng-model="Name" />
+    </div>
+
+    <div class="left">
+        <button class="btnGreen ml65" ng-click="search();">查询</button>
+        <button ng-show="showAddBtn.show" class="btnGreen" ng-click="create();">添加安全课程分类</button>
+    </div>
+</div>
+
+<div class="grayLine"></div>
+
+<table class="tableBox" border="1">
+    <thead>
+    <tr>
+        <th>分类名称</th>
+        <th>分类编码</th>
+        <th>简介</th>
+        <th>排序</th>
+        <th>更新时间</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="item in List">
+        <td style="word-wrap:break-word;" width="20%"><a ng-click="edit(item);">{{item.Name}}</a></td>
+        <td style="word-wrap:break-word;" width="5%">{{item.ID}}</td>
+        <td style="word-wrap:break-word;" width="20%">{{item.Intro}}</td>
+        <td style="word-wrap:break-word;" width="5%">{{item.Sort}}</td>
+        <td style="word-wrap:break-word;" width="10%">{{item.ModifyTime}}</td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="pagingContainer clearfix">
+    <paging get-url="getUrl" callback-fn="directiveCallBack"></paging>
+</div>

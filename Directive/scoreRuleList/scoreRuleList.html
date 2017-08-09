@@ -1,0 +1,38 @@
+
+<div class="searchRow clearfix">
+    <div class="left">
+        <button class="btnGreen ml65" ng-click="search();">查询</button>
+        <button ng-show="showAddBtn.show" class="btnGreen" ng-click="create();">添加奖励规则</button>
+    </div>
+</div>
+
+<div class="grayLine"></div>
+
+<table class="tableBox" border="1">
+    <thead>
+    <tr>  
+        <th>奖励规则编码</th>      
+        <th>开始分数</th>
+        <th>结束分数</th>
+        <th>赠送学豆数</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="item in List">   
+        <td style="word-wrap:break-word;" width="10%">{{item.ID}}</td>
+        <td style="word-wrap:break-word;" width="20%">{{item.ScoreBegin}}</td>
+        <td style="word-wrap:break-word;" width="10%">{{item.ScoreEnd}}</td>
+        <td style="word-wrap:break-word;" width="10%">{{item.StudyBean}}</td>
+        <td style="word-wrap:break-word;" width="15%">
+            <button ng-click="edit(item);" ng-show="showAddBtn">修改</button>
+            <button ng-click="delete(item);" ng-show="showAddBtn">删除</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="pagingContainer clearfix">
+    <paging get-url="getUrl" callback-fn="directiveCallBack"></paging>
+</div>

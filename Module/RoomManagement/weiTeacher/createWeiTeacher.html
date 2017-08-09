@@ -1,0 +1,80 @@
+<div class="navigation">我的应用 > 妈妈微课管理 > {{t_title}}</div>
+
+
+<div>
+    <div class="searchRow clearfix">
+        <div class="left">
+            <label>姓名：</label>
+            <input type="text" maxlength="20" class="width200" ng-model="Name" />
+        </div>
+    </div>
+    <div class="searchRow clearfix">
+
+        <div class="left mr15">
+            <label>简介：</label>
+            <textarea name="Intro" cols="60" rows="2" ng-model="Intro" maxlength="200"></textarea>
+        </div>
+    </div>
+
+    <div class="searchRow" ng-show="false">
+        <div class="left mr15">
+            <label>省：</label>
+            <select class="width200" ng-model="Province" ng-options="m.code as m.name for m in jsVersion"></select>
+        </div>
+        <div class="left mr15">
+            <label>市：</label>
+            <select class="width200" ng-model="City" ng-options="m.code as m.name for m in jsVersion"></select>
+        </div>
+        <div class="left mr15">
+            <label>区(县)：</label>
+            <select class="width200" ng-model="County" ng-options="m.code as m.name for m in jsVersion"></select>
+        </div>
+
+    </div>
+
+    <div class="searchRow clearfix">
+        <div class="left mr15">
+            <label>地址：</label>
+            <input type="text" maxlength="200" class="width200" ng-model="Address" />
+        </div>
+    </div>
+
+    <div class="searchRow clearfix">
+
+        <div class="left">
+            <label>联系电话：</label>
+            <input type="text" maxlength="60" class="width200" ng-model="Tel" />
+        </div>
+    </div>
+    <div class="searchRow clearfix">
+        <div class="left mr15">
+            <label >照片信息：</label>
+            <button class="nextBtn mr15 ml14 pr" id="btnUploadImg">
+                上传文件
+                <input type="file" class="inputFile" name="file1" id="file1" />
+            </button>
+            <span ng-show="showImg"><a target="_blank" href="{{ImageURL}}">查看</a></span>
+            <span class="red1" ng-bind="r1"></span>
+            <span contenteditable="true" ng-show="false" ng-bind="ImageURL"></span>
+            <span>尺寸800*800, 大小500kb</span>
+        </div>
+    </div>
+
+    <div class="searchRow clearfix">
+        <div class="left mr15">
+            <label>头像信息：</label>
+            <button class="nextBtn mr15 ml14 pr" id="btnUploadAvatar">
+                上传头像图片
+                <input type="file" class="inputFile" name="file1" id="file1" />
+            </button>
+            <span ng-show="showImg"><a target="_blank" href="{{Avatar}}">查看</a></span>
+            <span class="red1" ng-bind="r2"></span>
+            <span contenteditable="true" ng-show="false" ng-bind="Avatar"></span>
+            <span>尺寸100*100, 大小100kb</span>
+        </div>
+    </div>
+</div>
+
+<div class="mt10" ng-show="showButton">
+    <button class="btnGreen" ng-click="createWeiTeacher();">保存提交</button>
+</div>

@@ -1,0 +1,36 @@
+<div class="navigation">我的应用 > 作业管理 > {{t_title}}</div>
+
+
+<div>
+    <div class="searchRow clearfix">
+        <div class="left">
+            <label>奖励规则编码：{{ID}}</label>
+        </div>
+    </div>
+    <div class="searchRow clearfix">
+        <div class="left">
+            <label>开始分数：</label>
+            <input type="text" maxlength="60" class="width200" ng-model="ScoreBegin" />
+        </div>
+    </div>
+    <div class="searchRow clearfix">
+
+        <div class="left mr15">
+            <label>结束分数：</label>
+            <input type="text" maxlength="10" class="width200" ng-model="ScoreEnd" />
+        </div>
+    </div>
+
+    <div class="searchRow clearfix">
+
+        <div class="left">
+            <label>赠送学豆数：</label>
+            <input type="text" maxlength="60" class="width200" ng-model="StudyBean" />
+        </div>
+    </div>
+
+</div>
+
+<div class="mt10" ng-show="showButton">
+    <button class="btnGreen" ng-click="createScoreRule();">保存提交</button>
+</div>

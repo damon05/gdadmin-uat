@@ -1,0 +1,55 @@
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label>会员账号：</label>
+        <input type="text" placeholder="会员账号" class="width150" ng-model="OpenID" />
+
+    </div>
+    <div class="left mr15">
+        <label>评论时间：</label>
+        <input type="text" class="width150" ng-model="startTime" />至<input type="text" class="width150" ng-model="endTime" />
+    </div>
+    <div class="left mr15">
+        <label>状态：</label>
+        <select class="width140" ng-model="statusID" ng-options="m.code as m.name for m in wxStatus"></select>
+    </div>
+    <div class="left">
+        <button class="btnGreen ml65" ng-click="search();">查询</button>        
+    </div>
+</div>
+
+<div class="grayLine"></div>
+
+<table class="tableBox" border="1">
+    <thead>
+    <tr>        
+        <th>会员账号</th>
+        <th>学号</th>
+        <th>评论时间</th>
+        <th>评论内容</th>  
+        <th>排序权重</th>
+        <th>状态</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="item in List"> 
+        <td style="word-wrap: break-word; word-break: break-all;" width="10%">{{item.OpenID}}</td>
+        <td style="word-wrap:break-word;" width="5%">{{item.StudentNo}}</td>
+        <td style="word-wrap:break-word;" width="10%">{{item.CommetTime}}</td>
+        <td style="word-wrap:break-word;" width="20%">{{item.Content}}</td>
+        <td style="word-wrap:break-word;" width="5%">{{item.Sort}}</td>
+        <td style="word-wrap:break-word;" width="5%" ng-if="item.IsValid==false">无效</td>
+        <td style="word-wrap:break-word;" width="5%" ng-if="item.IsValid==true">有效</td>
+        <td style="word-wrap:break-word;" width="10%">
+            <button ng-click="edit(item);" ng-show="item.IsValid==false" style="width:50px;">置有效</button>
+            <button ng-click="edit(item);" ng-show="item.IsValid==true" style="width:50px;">置无效</button>
+          </td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="pagingContainer clearfix">
+    <paging get-url="getUrl" callback-fn="directiveCallBack"></paging>
+</div>

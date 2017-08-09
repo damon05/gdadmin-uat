@@ -1,0 +1,71 @@
+
+<div class="navigation">全局配置 > 字典管理 > <span style="color: red;">IT专属人员负责, 勿动.</span></div>
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label>添加大分类：</label>
+        <button class="btnGreen" ng-click="showCateEvent();">添加</button>
+        <span ng-show="showAddCate">
+            名称:<input class="width140" ng-model="cateName" type="text" />
+            Code:<input class="width140" ng-model="cateCode" type="text" />
+            <button class="btnGreen" ng-click="addCate();">确定</button>
+        </span>
+    </div>
+</div>
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label>添加子分类：</label>
+        <button class="btnGreen" ng-click="showChildEvent();">添加</button>
+        <span ng-show="showAddChild">
+            选择大分类:<select class="width140" ng-model="selectCate" ng-options="m.code as m.name for m in cates"></select>
+            名称:<input class="width140" ng-model="childName" type="text" />
+            Code:<input class="width140" ng-model="childCode" type="text" />
+            <button class="btnGreen" ng-click="addChild();">确定</button>
+        </span>
+    </div>
+</div>
+
+<div class="grayLine"></div>
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label>大分类：</label>
+        <select class="width140" ng-model="searchSelectCate" ng-options="m.code as m.name for m in cates"></select>
+    </div>
+    <div class="left">
+        <button class="btnGreen" ng-click="searchChildren();">查询</button>
+    </div>
+</div>
+
+<table class="tableBox" border="1">
+    <thead>
+    <tr>
+        <th>名称</th>
+        <th>Code</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="item in children">
+        <td style="width: 30%">{{item.name}}</td>
+        <td style="width: 30%">{{item.code}}</td>
+        <td>
+            <button ng-click="showEdit(item);">修改</button>
+            <button ng-click="del(item);">删除</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="searchRow clearfix" ng-show="showEditChild">
+    <div class="left mr15">
+        <label>修改子分类：</label>
+        <span>
+            名称:<input class="width140" ng-model="editChildName" type="text" />
+            Code:<input class="width140" ng-model="editChildCode" type="text" />
+            <button class="btnGreen" ng-click="editChild();">保存</button>
+        </span>
+    </div>
+</div>

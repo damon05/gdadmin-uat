@@ -1,0 +1,42 @@
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label>听课时间：</label>
+        <input type="text" class="width150" ng-model="startTime" />至<input type="text" class="width150" ng-model="endTime" />
+    </div>
+    <div class="left">
+        <button class="btnGreen ml65" ng-click="search();">查询</button>        
+    </div>
+</div>
+
+<div class="grayLine"></div>
+
+<table class="tableBox" border="1">
+    <thead>
+    <tr>        
+        <th>会员账号</th>
+        <th>学号</th>
+        <th>评论时间</th>
+        <th>课程标题</th>  
+        <th>学校名称</th>
+        <th>会员身份</th>        
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="item in List"> 
+        <td style="word-wrap: break-word; word-break: break-all;" width="10%">{{item.OpenID}}</td>
+        <td style="word-wrap:break-word;" width="5%">{{item.StudentNo}}</td>
+        <td style="word-wrap:break-word;" width="10%">{{item.LearnTime}}</td>
+        <td style="word-wrap:break-word;" width="15%">{{item.CourseName}}</td>
+        <td style="word-wrap:break-word;" width="15%">{{item.SchoolName}}</td>
+        <td style="word-wrap:break-word;" width="5%" ng-if="item.Identity==0">爸爸</td>
+        <td style="word-wrap:break-word;" width="5%" ng-if="item.Identity==1">妈妈</td>  
+        <td style="word-wrap:break-word;" width="5%" ng-if="item.Identity==null"></td>  
+    </tr>
+    </tbody>
+</table>
+
+<div class="pagingContainer clearfix">
+    <paging get-url="getUrl" callback-fn="directiveCallBack"></paging>
+</div>

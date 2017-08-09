@@ -1,0 +1,18 @@
+﻿<div class="navigation">我的应用 > 公众账号管理 > 入驻学校管理</div>
+
+
+<div>
+    <iframe style="border:none;width: 100%;height:700px;" scrolling="auto" frameborder="0" id="shop_Iframe" src="{{_src | trustedRes}}"></iframe>
+</div>
+
+<script type="text/javascript">
+
+    window.onresize=function(){
+        oResize();
+    }
+    function oResize(){
+        var oHeight = document.body.clientHeight;
+        document.getElementById('shop_Iframe').style.height = (oHeight-130)+"px";
+    }
+    oResize();
+</script>

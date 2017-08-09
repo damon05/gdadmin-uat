@@ -1,0 +1,46 @@
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label>学校名称：</label>
+        <input type="text" placeholder="学校名称" class="width150" ng-model="schoolName" />
+    </div>
+    <div class="left">
+        <label>学校级别：</label>
+        <select class="width140" ng-model="schoolLevel" ng-options="m.code as m.name for m in wxCourseLevel"></select>
+     
+    </div>
+    <div class="left">
+        <button class="btnGreen ml65" ng-click="searchSchool();">查询</button>
+        <button ng-show="showAddBtn.show" class="btnGreen" ng-click="createSchool();">注册学校</button>
+    </div>
+</div>
+
+<div class="grayLine"></div>
+
+<table class="tableBox" border="1">
+    <thead>
+    <tr>
+        <th>学校编号</th>
+        <th>学校名称</th>
+        <th>学校网址</th>
+        <th>联系人</th>
+        <th>联系电话</th>
+        <th>学校级别</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="item in roomList">        
+        <td style="word-wrap:break-word;" width="10%">{{item.SchoolID}}</td>        
+        <td style="word-wrap:break-word;" width="20%"><a ng-click="editSchool(item);">{{item.SchoolName}}</a></td>
+        <td style="word-wrap:break-word;" width="15%">{{item.WebSite}}</td>
+        <td style="word-wrap:break-word;" width="10%">{{item.Linkman}}</td>
+        <td style="word-wrap:break-word;" width="5%">{{item.Phone}}</td>
+        <td style="word-wrap:break-word;" width="5%">{{item.SchoolLevelName}}</td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="pagingContainer clearfix">
+    <paging get-url="getUrl" callback-fn="directiveCallBack"></paging>
+</div>

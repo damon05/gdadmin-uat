@@ -1,0 +1,60 @@
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label>课程名称：</label>
+        <input type="text" placeholder="课程名称" class="width150" ng-model="Name" />
+    </div>
+    <div class="left mr15">
+        <label>课程分类：</label>
+        <select class="width140" ng-model="CategoryID" ng-options="m.code as m.name for m in categoryList"></select>
+    </div>
+    <div class="left mr15">
+        <label>状态：</label>
+        <select class="width140" ng-model="statusID" ng-options="m.code as m.name for m in wxStatus"></select>
+    </div>
+   
+</div>
+
+<div class="searchRow clearfix">
+    <div class="left">
+        <button class="btnGreen ml65" ng-click="search();">查询</button>
+        <button ng-show="showAddBtn.show" class="btnGreen" ng-click="create();">添加课程</button>
+    </div>
+</div>
+
+    <div class="grayLine"></div>
+
+    <table class="tableBox" border="1">
+        <thead>
+            <tr>
+                <th>课程名称</th>
+                <th>课程分类</th>
+                <th>状态</th>               
+                <th>发布时间</th>
+                <th>更新时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="item in List">
+                <td style="word-wrap:break-word;" width="20%">{{item.CourseName}}</td>
+                <td style="word-wrap:break-word;" width="15%">{{item.CategoryName}}</td>
+                <td style="word-wrap:break-word;" width="5%" ng-if="item.Status==0">未发布</td>
+                <td style="word-wrap:break-word;" width="5%" ng-if="item.Status==1">已发布</td>             
+                <td style="word-wrap:break-word;" width="10%">{{item.PublishTime}}</td>
+                <td style="word-wrap:break-word;" width="10%">{{item.ModifyTime}}</td>
+                <td style="word-wrap:break-word;" width="15%">
+                    <button ng-click="publish(item);" ng-show="item.Status==0" style="width:30px;">发布</button>
+                    <button ng-click="publish(item);" ng-show="item.Status==1" style="width:60px;">取消发布</button>
+                    <button ng-click="edit(item);" ng-show="item.Status==0" style="width:30px;">修改</button>
+                    <button ng-click="delete(item);" ng-show="item.Status==0" style="width:30px;">删除</button>
+                    <button ng-click="detail(item);" style="width:30px;">详情</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="pagingContainer clearfix">
+        <paging get-url="getUrl" callback-fn="directiveCallBack"></paging>
+    </div>

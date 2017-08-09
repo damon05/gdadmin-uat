@@ -1,0 +1,27 @@
+<div class="navigation">我的应用 > 数据分析 > 课程点击排行榜</div>
+<!--<div class="mt10 tr">-->
+<!--<button class="nextBtn">上一页</button>-->
+<!--<button class="nextBtn">下一页</button>-->
+<!--</div>-->
+
+<table class="tableBox" border="1">
+    <thead>
+    <tr>
+        <th>课程名称</th>
+        <th>点击次数</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="item in proList">
+        <td><a>{{item.courseName}}</a></td>
+        <td>{{item.watchCount}}</td>
+        <td><a ng-click="previewPro(item);">预览</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="pagingContainer clearfix">
+    <paging get-url="getUrl" callback-fn="directiveCallBack"></paging>
+</div>

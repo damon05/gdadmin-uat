@@ -1,0 +1,36 @@
+<div class="navigation">我的应用 > 妈妈微课管理 > {{t_title}}</div>
+
+
+<div>
+    <div class="searchRow clearfix">
+        <div class="left">
+            <label>分类编码：{{ID}}</label>
+        </div>
+    </div>
+    <div class="searchRow clearfix">
+        <div class="left">
+            <label>分类名称：</label>
+            <input type="text" maxlength="60" class="width200" ng-model="Name" />
+        </div>
+    </div>
+    <div class="searchRow clearfix">
+
+        <div class="left mr15">
+            <label>分类简介：</label>
+            <input type="text" maxlength="10" class="width200" ng-model="Intro" />
+        </div>
+    </div>
+
+    <div class="searchRow clearfix">
+
+        <div class="left">
+            <label>排序：</label>
+            <input type="text" maxlength="60" class="width200" ng-model="Sort" />
+        </div>
+    </div>
+
+</div>
+
+<div class="mt10" ng-show="showButton">
+    <button class="btnGreen" ng-click="createCourseCategory();">保存提交</button>
+</div>

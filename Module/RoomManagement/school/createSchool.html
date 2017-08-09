@@ -1,0 +1,79 @@
+<div class="navigation">我的应用 > 学校管理 > {{t_title}}</div>
+
+
+<div>
+    <div class="searchRow clearfix">
+        <div class="left">
+            <label>学校编码：</label>
+            <input type="text" maxlength="20" class="width200" ng-model="SchoolID" />
+        </div>
+    </div>
+    <div class="searchRow clearfix">
+        <div class="left">
+            <label>学校名称：</label>
+            <input type="text" maxlength="100" class="width200" ng-model="SchoolName" />
+        </div>
+    </div>
+    <div class="searchRow clearfix">
+
+        <div class="left mr15">
+            <label>学校网址：</label>
+            <input type="text" maxlength="60" class="width200" ng-model="WebSite" />
+        </div>
+    </div>
+
+    <div class="searchRow" ng-show="false">
+        <div class="left mr15">
+            <label>省：</label>
+            <select class="width200" ng-model="Province" ng-options="m.code as m.name for m in jsVersion"></select>
+        </div>
+        <div class="left mr15">
+            <label>市：</label>
+            <select class="width200" ng-model="City" ng-options="m.code as m.name for m in jsVersion"></select>
+        </div>
+        <div class="left mr15">
+            <label>区(县)：</label>
+            <select class="width200" ng-model="County" ng-options="m.code as m.name for m in jsVersion"></select>
+        </div>
+
+    </div>
+
+    <div class="searchRow clearfix">
+        <div class="left mr15">
+            <label>地址：</label>           
+            <input type="text" maxlength="200" class="width200" ng-model="Address" />
+        </div>
+    </div>
+
+    <div class="searchRow clearfix">
+
+        <div class="left mr15">
+            <label>联系人：</label>
+            <input type="text" maxlength="10" class="width200" ng-model="Linkman" />
+        </div>
+    </div>
+    <div class="searchRow clearfix">
+        <div class="left">
+            <label>联系电话：</label>
+            <input type="text" maxlength="60" class="width200" ng-model="Phone" />
+        </div>
+    </div>
+
+    <div class="searchRow clearfix">
+        <div class="left mr15">
+            <label>学校级别：</label>
+            <select class="width200" ng-model="SchoolLevel" ng-options="m.code as m.name for m in wxCourseLevel"></select>
+        </div>
+    </div>
+    <div class="searchRow clearfix">           
+            <div class="left">
+                <label>年级数量：</label>
+                <input type="text" maxlength="60" class="width200" ng-model="GradeAmount" />
+            </div>
+        </div>
+
+</div>
+
+<div class="mt10" ng-show="showButton">
+    <button class="btnGreen" ng-click="createSchool();">保存提交</button>
+</div>

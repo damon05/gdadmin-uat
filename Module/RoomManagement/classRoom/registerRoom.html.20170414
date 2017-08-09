@@ -1,0 +1,264 @@
+<div class="navigation">我的应用 > 人员管理 > {{t_title}}</div>
+
+
+<div>
+    <div class="searchRow clearfix">
+        <div class="left mr15">
+            <label class="ml28">租户号：</label>
+            <input type="text" class="width200" maxlength="20" ng-model="zhh"/>
+        </div>
+
+        <div class="left mr15">
+            <label>学校编号：</label>
+            <input type="text" maxlength="10" class="width200" ng-model="xxbh"/>
+        </div>
+
+        <div class="left">
+            <label>学校名称：</label>
+            <input type="text" maxlength="60" class="width200" ng-model="xxmc"/>
+        </div>
+    </div>
+
+    <div class="searchRow clearfix">
+        <div class="left mr15">
+            <label class="ml14">教室编号：</label>
+            <input type="text" maxlength="20" class="width200" ng-model="jsbh"/>
+        </div>
+
+        <div class="left mr15">
+            <label>教室名称：</label>
+            <input type="text" maxlength="50" class="width200" ng-model="jsmc"/>
+        </div>
+
+        <div class="left">
+            <label>安装地址：</label>
+            <input type="text" maxlength="50" class="width200" ng-model="jsdz"/>
+        </div>
+    </div>
+
+    <div class="searchRow clearfix">
+        <div class="left mr15">
+            <label class="ml14">授权账号：</label>
+            <input type="text" maxlength="20" class="width200" ng-model="sqzh"/>
+        </div>
+
+        <div class="left mr15">
+            <label>授权密码：</label>
+            <input type="text" maxlength="20" class="width200" ng-model="sqmm"/>
+        </div>
+
+        <div class="left">
+            <label>有效状态：</label>
+            <span><input type="radio" name="_status" value="y" ng-model="cStatus">有效</span>
+            <span><input type="radio" name="_status" value="n" ng-model="cStatus">无效</span>
+        </div>
+    </div>
+
+    <div class="searchRow">
+        <div class="left mr15">
+            <label>教室版本号：</label>
+            <select class="width200" ng-model="jsbbh" ng-options="m.code as m.name for m in jsVersion"></select>
+        </div>
+        <div class="left mr15">
+            <label>校长姓名：</label>
+            <input type="text" maxlength="20" class="width200" ng-model="xzxm"/>
+        </div>
+        <div class="left mr15">
+            <label>管理员信息：</label>
+            <input type="text" maxlength="100" class="width200" ng-model="glyxx"/>
+        </div>
+        <div class="left mr15"></div>
+        <!--<input type="text" maxlength="20" class="width200" ng-model="jsbbh"/>-->
+    </div>
+
+    <div class="searchRow clearfix">
+        <div class="left mr15">
+            <label class="left">交付日期：</label>
+            <input type="date" maxlength="20" class="width200" ng-model="jfrq"/>
+        </div>
+        <div class="left mr15">
+            <label class="left">邮箱(找回密码专用)：</label>
+            <input type="text" class="width140" ng-model="email"/>
+        </div>
+        <div class="left mr15">
+            <label class="left">加密秘钥：</label>
+            <input type="text" class="width140" ng-model="key" placeholder="加密密匙为8位数字字母组成"/>
+        </div>
+    </div>
+
+    <div class="searchRow clearfix" style="height: 100px;">
+        <label class="left ml14">备注说明：</label>
+        <textarea class="left" ng-model="bz" style="width: 835px;height: 100px;margin-left: 4px"></textarea>
+    </div>
+
+
+    <div class="editRow clearfix" ng-show="false">
+        <div class="left mr15">
+            <div>
+                <label>1:欢迎登陆安全教育平台：</label>
+                <button class="nextBtn mr15 ml14 pr" id="b1">
+                    上传文件
+                    <input type="file" class="inputFile" />
+                </button>
+                <span><a href={{sp1}} ng-show="showImg" target="_blank">查看</a></span>
+                <span ng-bind="r1" class="red1"></span>
+                <span contenteditable="true" ng-show="false" ng-bind="sp1"></span>
+            </div>
+            <div class="mt10">
+                <label>2:登陆页背景图：</label>
+                <button style="margin-left: 70px;" class="nextBtn mr15 ml14 pr" id="b2">
+                    上传文件
+                    <input type="file" class="inputFile"/>
+                </button>
+                <span><a href={{sp2}} ng-show="showImg" target="_blank">查看</a></span>
+                <span ng-bind="r2" class="red1"></span>
+                <span contenteditable="true" ng-show="false" ng-bind="sp2"></span>
+            </div>
+        </div>
+        <div class="ml600">
+            <img class="reg_room_img" src="resource/images/r1.jpg" />
+        </div>
+    </div>
+
+    <div class="editRow clearfix" style="height: 172px;">
+        <div class="left mr15">
+            <div ng-show="false">
+                <label>3:课前准备按钮图：</label>
+                <button style="margin-left: 59px;" class="nextBtn mr15 ml14 pr" id="b3">
+                    上传文件
+                    <input type="file" class="inputFile"/>
+                </button>
+                <span><a href={{sp3}} ng-show="showImg" target="_blank">查看</a></span>
+                <span ng-bind="r3" class="red1"></span>
+                <span contenteditable="true" ng-show="false" ng-bind="sp3"></span>
+            </div>
+            <div class="mt10">
+                <label>1:选择课程按钮图：</label>
+                <button style="margin-left: 59px;" class="nextBtn mr15 ml14 pr" id="b4">
+                    上传文件
+                    <input type="file" class="inputFile"/>
+                </button>
+                <span><a href={{sp4}} ng-show="showImg" target="_blank">查看</a></span>
+                <span ng-bind="r4" class="red1"></span>
+                <span contenteditable="true" ng-show="false" ng-bind="sp4"></span>
+            </div>
+            <div class="mt10">
+                <label>2:选课页背景图：</label>
+                <button style="margin-left: 73px;" class="nextBtn mr15 ml14 pr" id="b5">
+                    上传文件
+                    <input type="file" class="inputFile"/>
+                </button>
+                <span><a href={{sp5}} ng-show="showImg" target="_blank">查看</a></span>
+                <span ng-bind="r5" class="red1"></span>
+                <span contenteditable="true" ng-show="false" ng-bind="sp5"></span>
+            </div>
+        </div>
+        <div class="ml600">
+            <img class="reg_room_img" src="resource/images/r2.jpg" />
+        </div>
+    </div>
+
+    <div class="editRow clearfix">
+        <div class="left mr15">
+            <div>
+                <label>3:安全教育平台logo：</label>
+                <button style="margin-left: 48px;" class="nextBtn mr15 ml14 pr" id="b6">
+                    上传文件
+                    <input type="file" class="inputFile"/>
+                </button>
+                <span><a href={{sp6}} ng-show="showImg" target="_blank">查看</a></span>
+                <span ng-bind="r6" class="red1"></span>
+                <span contenteditable="true" ng-show="false" ng-bind="sp6"></span>
+            </div>
+            <div class="mt10" ng-show="false">
+                <label>7:年级班级选择按钮图：</label>
+                <button style="margin-left: 32px;" class="nextBtn mr15 ml14 pr" id="b7">
+                    上传文件
+                    <input type="file" class="inputFile"/>
+                </button>
+                <span><a href={{sp7}} ng-show="showImg" target="_blank">查看</a></span>
+                <span ng-bind="r7" class="red1"></span>
+                <span contenteditable="true" ng-show="false" ng-bind="sp7"></span>
+            </div>
+            <div class="mt10">
+                <label>4:返回首页按钮图：</label>
+                <button style="margin-left: 60px;" class="nextBtn mr15 ml14 pr" id="b8">
+                    上传文件
+                    <input type="file" class="inputFile"/>
+                </button>
+                <span><a href={{sp8}} ng-show="showImg" target="_blank">查看</a></span>
+                <span ng-bind="r8" class="red1"></span>
+                <span contenteditable="true" ng-show="false" ng-bind="sp8"></span>
+            </div>
+        </div>
+        <div class="ml600">
+            <img class="reg_room_img" src="resource/images/r3.jpg" />
+        </div>
+    </div>
+
+    <div class="editRow clearfix" ng-show="false">
+        <div class="left mr15">
+            <div>
+                <label>9:学生选择按钮图：</label>
+                <button style="margin-left: 60px;" class="nextBtn mr15 ml14 pr" id="b9">
+                    上传文件
+                    <input type="file" class="inputFile"/>
+                </button>
+                <span><a href={{sp9}} ng-show="showImg" target="_blank">查看</a></span>
+                <span ng-bind="r9" class="red1"></span>
+                <span contenteditable="true" ng-show="false" ng-bind="sp9"></span>
+            </div>
+            <div class="mt10">
+                <label>10:重新选择班级按钮图：</label>
+                <button style="margin-left: 24px;" class="nextBtn mr15 ml14 pr" id="b10">
+                    上传文件
+                    <input type="file" class="inputFile"/>
+                </button>
+                <span><a href={{sp10}} ng-show="showImg" target="_blank">查看</a></span>
+                <span ng-bind="r10" class="red1"></span>
+                <span contenteditable="true" ng-show="false" ng-bind="sp10"></span>
+            </div>
+        </div>
+        <div class="ml600">
+            <img class="reg_room_img" src="resource/images/r4.jpg" />
+        </div>
+    </div>
+
+    <div class="editRow clearfix" ng-show="false">
+        <div class="left mr15">
+            <label>11:返回上一级：</label>
+            <button style="margin-left: 80px;" class="nextBtn mr15 ml14 pr" id="b11">
+                上传文件
+                <input type="file" class="inputFile"/>
+            </button>
+            <span><a href={{sp12}} ng-show="showImg" target="_blank">查看</a></span>
+            <span ng-bind="r11" class="red1"></span>
+            <span contenteditable="true" ng-show="false" ng-bind="sp11"></span>
+        </div>
+        <div class="ml600">
+            <img class="reg_room_img" src="resource/images/r5.jpg" />
+        </div>
+    </div>
+
+    <div class="editRow clearfix" ng-show="false">
+        <div class="left mr15">
+            <div class="searchRow">
+                <label>12:完成点名继续选课按钮图：</label>
+                <button class="nextBtn mr15 ml14 pr" id="b12">
+                    上传文件
+                    <input type="file" class="inputFile"/>
+                </button>
+                <span><a href={{sp12}} ng-show="showImg" target="_blank">查看</a></span>
+                <span ng-bind="r12" class="red1"></span>
+                <span contenteditable="true" ng-show="false" ng-bind="sp12"></span>
+            </div>
+        </div>
+        <div class="ml600">
+            <img class="reg_room_img" src="resource/images/r6.jpg" />
+        </div>
+    </div>
+</div>
+
+<div class="mt10" ng-show="showButton">
+    <button class="btnGreen" ng-click="createClass();">保存提交</button>
+</div>

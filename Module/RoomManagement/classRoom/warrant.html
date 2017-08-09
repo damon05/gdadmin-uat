@@ -1,0 +1,31 @@
+
+<div class="navigation">我的应用 > 培训机构管理 > 课程授权</div>
+
+<div class="classRoomBigContainer">选择课程</div>
+<div style="border: 1px solid black;margin-bottom: 20px;">
+
+    <pro-list show-add-btn="{show:false}" show-ck="{show:true}" choose-callback="getSelPros"></pro-list>
+
+</div>
+
+
+<div class="classRoomBigContainer">选择教室</div>
+<div style="border: 1px solid black;margin-bottom: 20px;">
+    <class-list show-add-btn="{show:false}" show-ck="{show:true}" choose-callback="getSelClass"></class-list>
+</div>
+
+<div class="classRoomBigContainer">授权</div>
+<div style="border: 1px solid black;">
+    <div class="searchRow clearfix" style="height: 35px;">
+        <div class="left">
+            <label>授权日期：从</label>
+            <input type="date" placeholder="请选择开始时间" class="width150" ng-model="beginDate"/>
+            <span> 到 </span>
+            <input type="date" placeholder="请选择结束时间" class="width150" ng-model="endDate"/>
+        </div>
+
+        <div class="left">
+            <button class="btnGreen ml65" ng-click="submitWarrant();">提交授权</button>
+        </div>
+    </div>
+</div>

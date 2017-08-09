@@ -1,0 +1,113 @@
+
+
+<div class="content">
+    <div class="leftMenu">
+        <div class="menuTop">教师机构管理</div>
+
+        <div class="menuItem">
+            <div class="title">
+                <img class="menuIcon" src="resource/images/module.jpg"/>
+                <span>教室管理</span>
+            </div>
+            <ol class="clearfix">
+                <li ui-sref="roomManage.roomList">教室注册</li>
+                <!--<li ui-sref="roomManage.register">教室注册</li>-->
+                <li ui-sref="roomManage.productList">课程管理</li>
+                <!--<li ui-sref="roomManage.createProduct">创建商品</li>-->
+                <li ui-sref="roomManage.warrant">课程授权</li>
+                <li ui-sref="roomManage.decoration">课程图标</li>
+                <!--<li ui-sref="roomManage.pushBullet">推送记录</li>-->
+            </ol>
+        </div>
+
+        <div class="menuItem" ng-show="false">
+            <div class="title">
+                <img class="menuIcon" src="resource/images/analyze.jpg"/>
+                <span>数据分析</span>
+            </div>
+            <ol class="clearfix">
+                <li ui-sref="roomManage.evaluateList">评价分析</li>
+                <li ui-sref="roomManage.statisticsList">评价明细</li>
+                <li ui-sref="roomManage.report">PV/UV统计</li>
+                <li ui-sref="roomManage.proSort">课程排行</li>
+            </ol>
+        </div>
+
+        <div class="menuItem">
+            <div class="title">
+                <img class="menuIcon" src="resource/images/user.jpg"/>
+                <span>其他</span>
+            </div>
+            <ol class="clearfix">
+                <li ui-sref="roomManage.dictionary">字典管理</li>
+                <!--<li ui-sref="roomManage.templateList">模板列表</li>-->
+                <!--<li ui-sref="roomManage.templateCreate">添加模板</li>-->
+                <li ui-sref="roomManage.editPwd">修改密码</li>
+            </ol>
+        </div>
+        <div class="menuItem">
+            <div class="title">
+                <img class="menuIcon" src="resource/images/module.jpg" />
+                <span>作业管理</span>
+            </div>
+            <ol class="clearfix">
+                <li ui-sref="roomManage.homeworkList">作业分析</li>
+                <li ui-sref="roomManage.scoreRuleList">学豆奖励规则</li>
+            </ol>
+        </div>
+        <div class="menuItem">
+            <div class="title">
+                <img class="menuIcon" src="resource/images/module.jpg" />
+                <span>公众账号管理</span>
+            </div>
+            <ol class="clearfix">
+                <li ui-sref="roomManage.officalAccountList">公众账号管理</li>  
+                <li ui-sref="roomManage.createSettledSchool">入驻学校管理</li>
+                <li ui-sref="roomManage.investigateList">调查问卷管理</li>               
+            </ol>
+        </div>
+        <div class="menuItem">
+            <div class="title">
+                <img class="menuIcon" src="resource/images/module.jpg" />
+                <span>学校管理</span>
+            </div>
+            <ol class="clearfix">
+                <li ui-sref="roomManage.schoolList">学校管理</li>                
+                <li ui-sref="roomManage.notificationList">学校通知</li>
+            </ol>
+        </div>
+        <div class="menuItem">
+            <div class="title">
+                <img class="menuIcon" src="resource/images/analyze.jpg" />
+                <span>妈妈微课</span>
+            </div>
+            <ol class="clearfix">
+                <li ui-sref="roomManage.weiTeacherList">微课教师管理</li>
+                <li ui-sref="roomManage.courseCategoryList">课程分类管理</li>
+                <li ui-sref="roomManage.courseLabelList">课程标签管理</li>
+                <li ui-sref="roomManage.courseList">妈妈微课管理</li>
+            </ol>
+        </div>
+        <div class="menuItem">
+            <div class="title">
+                <img class="menuIcon" src="resource/images/analyze.jpg" />
+                <span>会员管理</span>
+            </div>
+            <ol class="clearfix">
+                <li ui-sref="roomManage.memberList">会员管理</li>
+            </ol>
+        </div>
+        <div class="menuItem lastItem">
+            <div class="title">
+                <img class="menuIcon" src="resource/images/analyze.jpg" />
+                <span>3D安全课程</span>
+            </div>
+            <ol class="clearfix">
+                <li ui-sref="roomManage.safeCategoryList">3D安全课程分类管理</li>
+                <li ui-sref="roomManage.safeCourseList">3D安全课程管理</li>                
+            </ol>
+        </div>       
+    </div>
+
+    <div ui-view class="rightContent"></div>
+</div>

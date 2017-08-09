@@ -1,0 +1,92 @@
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label>公众账号名称：</label>
+        <input type="text" placeholder="公众账号名称" class="width150" ng-model="OfficalName" />
+    </div>
+    <div class="left mr15">
+        <label>公众账号：</label>
+        <input type="text" placeholder="公众账号" class="width150" ng-model="OfficalCode"  />
+    </div>
+    <div class="left">        
+        <button ng-show="showAddBtn.show" class="btnGreen" ng-click="publish();">发布菜单</button>
+    </div>
+</div>
+
+<div class="grayLine"></div>
+<div class="searchRow clearfix" style="min-height:350px;" ng-repeat="item in List">
+    
+    <table class="tableBox" border="1">
+        <thead>
+            <tr>
+                <th colspan="5" align="left">
+                    <label>菜单{{item.Sort}}信息(名称字数不超过8个汉字或16个字母)</label>
+                </th></tr>
+            <tr>                
+                <th>级别</th>
+                <th>名称</th>
+                <th>跳转地址</th>
+                <th>更新时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr >                
+                <td style="word-wrap:break-word;font-size:16px;font-weight:bolder;" width="10%">主菜单{{item.Sort}}</td>
+                <td style="word-wrap:break-word;" width="20%">{{item.Name}}</td>
+                <td style="word-wrap:break-word;" width="15%">{{item.URL}}</td>
+                <td style="word-wrap:break-word;" width="10%">{{item.ModifyTime}}</td>
+                <td style="word-wrap:break-word;" width="10%">
+                    <button ng-click="edit(item);" style="width:30px;">修改</button>
+                </td>
+            </tr>
+            <tr ng-repeat="t in item.ChildItems">                
+                <td style="word-wrap:break-word;padding-left:10px;" width="10%">子菜单{{t.Sort}}</td>
+                <td style="word-wrap:break-word;" width="20%">{{t.Name}}</td>
+                <td style="word-wrap:break-word;" width="15%">{{t.URL}}</td>
+                <td style="word-wrap:break-word;" width="10%">{{t.ModifyTime}}</td>
+                <td style="word-wrap:break-word;" width="10%">
+                    <button ng-click="edit(t);" style="width:30px;">修改</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<script type="text/ng-template" id="menuItemEditTmpl">
+    <div class="ui-dialog-title" style="text-align:center; ">
+        {{popTitle}}
+    </div>
+    <div class="ui-dialog-content">
+        <div class="clearfix">
+
+            <div class="searchRow clearfix">
+                <div class="left">
+                    <label>菜单项名称：</label>
+                    <input type="text" maxlength="60" class="width200" ng-model="selectedItem.Name" />
+                </div>
+            </div>
+            <div class="searchRow clearfix">
+
+                <div class="left mr15">
+                    <label>跳转地址：</label>
+                    <input type="text" maxlength="60" class="width200" ng-model="selectedItem.URL" />
+                </div>
+            </div>
+
+        </div>
+        <div class="clearfix" style="text-align:center; margin-top:10px;">
+            <button type="submit" class="btnGreen"
+                    ng-click="save()">
+                保存
+            </button>
+            <button type="button" class="btnGray"
+                    ng-click="closeThisDialog()">
+                取消
+            </button>
+
+        </div>
+    </div>
+</script>

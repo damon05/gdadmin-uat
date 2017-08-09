@@ -1,0 +1,29 @@
+<div class="navigation">我的应用 > 会员管理 > {{t_title}}</div>
+
+
+<div>    
+    <div class="searchRow clearfix">
+        <div class="left">
+            <label>家长手机号：</label>
+            <label>{{Mobile}}</label>
+            <input type="hidden" ng-model="MemberID" />
+        </div>
+    </div>
+    <div class="searchRow clearfix">
+        <div class="left">
+            <label>学号：</label>
+            <input type="text" maxlength="60" class="width200" ng-model="StudentNo" />
+        </div>
+    </div>
+    <div class="searchRow clearfix">
+        <div class="left">
+            <label>学校：</label>
+            <select class="width287" ng-model="SchoolID" ng-options="m.code as m.name for m in wxSchool"></select>
+        </div>
+    </div>
+
+</div>
+
+<div class="mt10" ng-show="showButton">
+    <button class="btnGreen" ng-click="createMember();">保存提交</button>
+</div>

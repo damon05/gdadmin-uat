@@ -1,0 +1,57 @@
+<div class="navigation">我的应用 > 公众账号管理 > {{t_title}}</div>
+
+
+<div>
+    <div class="searchRow clearfix">
+        <div class="left">
+            <label>公众账号：</label>
+            <input type="text" maxlength="60" class="width200" ng-model="OfficalCode" />
+        </div>
+    </div>
+    <div class="searchRow clearfix">
+        <div class="left">
+            <label>公众账号名称：</label>
+            <input type="text" maxlength="60" class="width200" ng-model="OfficalName" />
+        </div>
+    </div>
+    <div class="searchRow clearfix">
+
+        <div class="left mr15">
+            <label>公众账号简介：</label>
+            <input type="text" maxlength="255" class="width200" ng-model="Remark" />
+        </div>
+    </div>
+
+    <div class="searchRow clearfix">
+
+        <div class="left">
+            <label>AppID：</label>
+            <input type="text" maxlength="60" class="width200" ng-model="AppID" />
+        </div>
+    </div>
+    <div class="searchRow clearfix">
+
+        <div class="left">
+            <label>AppSecret：</label>
+            <input type="text" maxlength="60" class="width200" ng-model="AppSecret" />
+        </div>
+    </div>
+    <div class="searchRow clearfix">
+
+        <div class="left">
+            <label>账号级别：</label>         
+            <select class="width200" ng-model="Category" ng-options="m.code as m.name for m in AccountCategoryList"></select>
+        </div>
+    </div>
+    <div class="searchRow clearfix">
+
+        <div class="left">
+            <label>账号类型：</label>
+            <select class="width200" ng-model="AccountType" ng-options="m.code as m.name for m in AccountTypeList"></select>
+        </div>
+    </div>
+</div>
+
+<div class="mt10" ng-show="showButton">
+    <button class="btnGreen" ng-click="createOfficalAccount();">保存提交</button>
+</div>

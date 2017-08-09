@@ -1,0 +1,285 @@
+<div class="navigation">我的应用 > 教室管理 > {{t_title}}</div>
+
+<div class="searchRow clearfix">
+    <div class="left mr15" ng-show="false">
+        <label>商品类别：</label>
+        <span><input type="radio" value="jf" name="procate" ng-model="proCate" />教辅</span>
+
+        <label>教辅分类：</label>
+        <select class="width287" ng-model="jfNum" ng-options="m.code as m.name for m in jfs"></select>
+    </div>
+
+    <div class="left mr15">
+        <label>课程系列：</label>
+        <select class="width140" ng-model="kcxlsNum" ng-change="getXxl();" ng-options="m.code as m.name for m in kcxls"></select>
+    </div>
+
+    <div class="left mr15">
+        <label>子集系列：</label>
+        <select class="width140" ng-model="childKcxlNum" ng-options="m.code as m.name for m in xxls"></select>
+    </div>
+
+    <div class="left">
+        <label>适用教室版本号：</label>
+        <select class="width140" ng-model="syjsbbh" ng-options="m.code as m.name for m in jsVersion"></select>
+    </div>
+
+    <div class="left">
+        <label class="ml28">当前版本号：</label>
+        <!--<input type="text" maxlength="20" placeholder="" class="width268" ng-model="ddbbh"/>-->
+        <select class="width140" ng-model="ddbbh" ng-options="m.code as m.name for m in nowjsVersion"></select>
+    </div>
+</div>
+
+<div class="searchRow clearfix" ng-show="false">
+    <div class="left mr15">
+        <span style="margin-right: 75px;"></span>
+        <span><input type="radio" value="kc" name="procate" ng-model="proCate" />课程</span>
+        <label>课程系列：</label>
+        <select class="width287" ng-model="kcxlsNum" ng-options="m.code as m.name for m in kcxls"></select>
+    </div>
+</div>
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label>商品编号：</label>
+        <input type="text" maxlength="10" placeholder="" class="width140" ng-model="spbh"/>
+    </div>
+    <div class="left">
+        <label>课程适用年级：</label>
+        <select class="width140" ng-model="kcsynj" ng-options="m.code as m.name for m in NIANJI"></select>
+    </div>
+    <div class="left">
+        <label class="ml40">商品名称：</label>
+        <input type="text" maxlength="60" placeholder="" class="width268" ng-model="ssmc"/>
+    </div>
+</div>
+
+<div class="searchRow clearfix">
+    <div class="left mr15 lh32">
+        <label>商品状态：</label>
+        <span><input type="radio" name="prostatus" value="down" ng-model="proStatus" /><span>下架</span></span>
+        <span><input type="radio" name="prostatus" value="up" ng-model="proStatus" /><span>上架</span></span>
+    </div>
+    <div class="left">
+        <label class="ml24">库存：</label>
+        <input type="number" placeholder="" class="width220" ng-model="spkc"/>个
+    </div>
+</div>
+
+<div class="searchRow clearfix height100">
+    <div class="left mr15">
+        <label class="left">商品简介：</label>
+        <textarea maxlength="1000" ng-model="spjj" style="width: 826px;height: 100px;float: left"></textarea>
+    </div>
+</div>
+
+<div class="searchRow clearfix height100">
+    <div class="left mr15">
+        <label class="left">商品内容：</label>
+        <textarea maxlength="1000" ng-model="spnr" style="width: 826px;height: 100px;float: left"></textarea>
+    </div>
+</div>
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label style="margin-left: 7px;">商品缩略图：</label>
+        <button class="nextBtn mr15" style="position: relative" id="btn1">
+            上传文件
+            <input type="file" class="inputFile"/>
+        </button>
+        <span ng-show="showImg"><a target="_blank" href="{{proImg}}">查看</a></span>
+        <span class="red1" ng-bind="r1"></span>
+        <span contenteditable="true" ng-show="false" ng-bind="proImg"></span>
+        <span>尺寸100*100, 大小100kb</span>
+    </div>
+</div>
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label>ppt课件上传：</label>
+        <button class="nextBtn mr15" style="position: relative" id="btn2">
+            上传文件
+            <input type="file" class="inputFile" name="file"/>
+        </button>
+        <span ng-show="showImg"><a target="_blank" href="{{keVideo}}">查看</a></span>
+        <span class="red1" ng-bind="r2"></span>
+        <span contenteditable="true" ng-show="false" ng-bind="keVideo"></span>
+        <span>要求：ppt等</span>
+    </div>
+</div>
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label>mp4课件上传：</label>
+        <button class="nextBtn mr15" style="position: relative" id="btn6">
+            上传文件
+            <input type="file" class="inputFile" name="file"/>
+        </button>
+        <span ng-show="showImg"><a target="_blank" href="{{dmtkj}}">查看</a></span>
+        <span class="red1" ng-bind="r6"></span>
+        <span contenteditable="true" ng-show="false" ng-bind="dmtkj"></span>
+        <span>要求：MP4等</span>
+    </div>
+</div>
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label style="margin-left: 70px;">学生作业ID：</label>
+        <input type="text" class="width200" ng-model="tmpId1" readonly />
+        <label class="ml12" style="margin-left: 82px;">学生作业名称：</label>
+        <input type="text" class="width248" ng-model="tmpName1" readonly/>
+        <input type="button" value="选择问卷" class="nextBtn" ng-click="showTmpDialog(1);" />
+    </div>
+</div>
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label>学生对课程评价问卷ID：</label>
+        <input type="text" ng-model="tmpId2" class="width200" readonly/>
+        <label class="ml12">教师对课程评价问卷名称：</label>
+        <input type="text" class="width248" ng-model="tmpName2" readonly/>
+        <input type="button" value="选择问卷" class="nextBtn" style="background-color: gray" ng-click="showTmpDialog(2);" />
+    </div>
+</div>
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label>其他对课程评价问卷ID：</label>
+        <input type="text" ng-model="tmpId3" class="width200" readonly/>
+        <label class="ml12">其他对课程评价问卷名称：</label>
+        <input type="text" class="width248" ng-model="tmpName3" readonly/>
+        <input type="button" value="选择问卷" class="nextBtn" style="background-color: gray" ng-click="showTmpDialog(3);" />
+    </div>
+</div>
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label class="ml42">课堂作业问卷ID：</label>
+        <input type="text" ng-model="tmpId4" class="width200" readonly/>
+        <label class="ml54">课堂作业问卷名称：</label>
+        <input type="text" class="width248" ng-model="tmpName4" readonly/>
+        <input type="button" value="选择问卷" class="nextBtn" style="background-color: gray" ng-click="showTmpDialog(4);" />
+    </div>
+</div>
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label class="ml42">课后作业问卷ID：</label>
+        <input type="text" ng-model="tmpId5" class="width200" readonly/>
+        <label class="ml54">课后作业问卷名称：</label>
+        <input type="text" class="width248" ng-model="tmpName5" readonly/>
+        <input type="button" value="选择问卷" class="nextBtn" style="background-color: gray" ng-click="showTmpDialog(5);" />
+    </div>
+</div>
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label style="margin-left: 86px;">课程标准：</label>
+        <button class="nextBtn mr15" style="position: relative;" id="btn3">
+            上传文件
+            <input type="file" class="inputFile" name="file"/>
+        </button>
+        <span style="margin-right: 11px;" ng-show="showImg"><a target="_blank" href="{{kcbz}}">查看</a></span>
+        <span class="red1" ng-bind="r3"></span>
+        <span contenteditable="true" ng-show="false" ng-bind="kcbz"></span>
+        <span class="f10">注：用于对主题课程的指导，其中包含课程的设计思路，各学段的课程目标，课程的主要内容，课程的实施与管理等内容。</span>
+    </div>
+</div>
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label style="margin-left: 115px;">教案：</label>
+        <button class="nextBtn mr15" style="position: relative" id="btn4">
+            上传文件
+            <input type="file" class="inputFile" name="file"/>
+        </button>
+        <span style="margin-right: 11px;" ng-show="showImg"><a target="_blank" href="{{jiaoan}}">查看</a></span>
+        <span class="red1" ng-bind="r4"></span>
+        <span contenteditable="true" ng-show="false" ng-bind="jiaoan"></span>
+        <span class="f10">注：指导教师进行授课，其中包含课程目标（知识目标、能力目标、情感、态度、价值观），教学重点，教学难点，教学手段及方法，教学过程等内容。</span>
+    </div>
+</div>
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label style="margin-left: 87px;">课程教材：</label>
+        <button class="nextBtn mr15" style="position: relative" id="btn5">
+            上传文件
+            <input type="file" class="inputFile" name="file"/>
+        </button>
+        <span style="margin-right: 11px;" ng-show="showImg"><a target="_blank" href="{{kcjc}}">查看</a></span>
+        <span class="red1" ng-bind="r5"></span>
+        <span contenteditable="true" ng-show="false" ng-bind="kcjc"></span>
+        <span class="f10">注：指导教师授课</span>
+    </div>
+</div>
+
+<!--<div class="searchRow clearfix">-->
+    <!--<div class="left mr15">-->
+        <!--<label style="margin-left: 73px;">多媒体课件：</label>-->
+        <!--<button class="nextBtn mr15" style="position: relative" id="btn6">-->
+            <!--上传文件-->
+            <!--<input type="file" class="inputFile" name="file"/>-->
+        <!--</button>-->
+        <!--<span style="margin-right: 11px;" ng-show="showImg"><a target="_blank" href="{{dmtkj}}">查看</a></span>-->
+        <!--<span class="red1" ng-bind="r6"></span>-->
+        <!--<span contenteditable="true" ng-show="false" ng-bind="dmtkj"></span>-->
+        <!--<span class="f10">注：用于教师课堂中授课。</span>-->
+    <!--</div>-->
+<!--</div>-->
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label style="margin-left: 17px;">教具使用说明及清单：</label>
+        <button class="nextBtn mr15" style="position: relative" id="btn7">
+            上传文件
+            <input type="file" class="inputFile" name="file"/>
+        </button>
+        <span style="margin-right: 11px;" ng-show="showImg"><a target="_blank" href="{{jjsysmjqd}}">查看</a></span>
+        <span class="red1" ng-bind="r7"></span>
+        <span contenteditable="true" ng-show="false" ng-bind="jjsysmjqd"></span>
+        <span class="f10">注：指导教师进行教具的使用方法及用途。</span>
+    </div>
+</div>
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label style="margin-left: 86px;">课程素材：</label>
+        <button class="nextBtn mr15" style="position: relative" id="btn8">
+            上传文件
+            <input type="file" class="inputFile" name="file"/>
+        </button>
+        <span style="margin-right: 11px;" ng-show="showImg"><a target="_blank" href="{{kcsc}}">查看</a></span>
+        <span class="red1" ng-bind="r8"></span>
+        <span contenteditable="true" ng-show="false" ng-bind="kcsc"></span>
+        <span class="f10">注：用于教师及学生对课程的深入了解。</span>
+    </div>
+</div>
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label style="margin-left: 115px;">题库：</label>
+        <button class="nextBtn mr15" style="position: relative" id="btn9">
+            上传文件
+            <input type="file" class="inputFile" name="file"/>
+        </button>
+        <span style="margin-right: 11px;" ng-show="showImg"><a target="_blank" href="{{tiku}}">查看</a></span>
+        <span class="red1" ng-bind="r9"></span>
+        <span contenteditable="true" ng-show="false" ng-bind="tiku"></span>
+        <span class="f10">注：学生的课上、课下的作业。</span>
+    </div>
+</div>
+
+<div class="mt10">
+    <button class="btnGreen" ng-click="savePro();">保存并预览</button>
+    <button class="btnGreen" ng-click="cancelPro();">取消</button>
+</div>
+
+<div class="mask" ng-if="showDialog">
+    <div class="mask_container">
+        <p class="close_mask" ng-click="closeDialog();">X</p>
+            <template-list show-add-btn="{show:false}" show-ck="{show:true}" from="{val:root}" choose-callback="getChooseTmps"></template-list>
+        <button class="btnGreen" ng-click="selectTemplates();">确定</button>
+    </div>
+</div>

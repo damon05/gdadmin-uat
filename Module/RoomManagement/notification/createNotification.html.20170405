@@ -1,0 +1,48 @@
+<div class="navigation">我的应用 > 学校管理 > {{t_title}}</div>
+
+
+<div>
+    <div class="searchRow clearfix">
+        <div class="left">
+            <label>学校：</label>
+            <select class="width287" ng-model="SchoolID" ng-options="m.code as m.name for m in wxSchool"></select>
+        </div>
+    </div>
+    <div class="searchRow clearfix">
+        <div class="left">
+            <label>标题：</label>
+            <input type="text" maxlength="60" class="width200" ng-model="Title" />
+        </div>
+    </div>
+    <div class="searchRow clearfix">
+
+        <div class="left mr15">
+            <label>作者：</label>
+            <input type="text" maxlength="10" class="width200" ng-model="Aurthor" />
+        </div>
+    </div>
+    <div class="searchRow clearfix" style="min-height:60px;">
+        <div class="left mr15">
+            <label>封面：</label>
+            <button class="nextBtn mr15 ml14 pr" id="btnUploadLogo">
+                上传封面
+                <input type="file" class="inputFile" name="file1" id="file1" />
+            </button>
+            <span ng-show="showImg"><a target="_blank" href="{{Logo}}">查看</a></span>
+            <span class="red1" ng-bind="r1"></span>
+            <span contenteditable="true" ng-show="false" ng-bind="Logo"></span>
+            <span>尺寸800*800, 大小500kb</span>
+        </div>
+    </div>
+    <div class="searchRow clearfix" style="min-height:60px">
+        <div class="left mr15">
+            <label>文章内容：</label>           
+            <textarea name="content" cols="60" rows="3" ng-model="Content"></textarea>
+        </div>
+    </div>
+
+</div>
+
+<div class="mt10" ng-show="showButton">
+    <button class="btnGreen" ng-click="createNotification();">保存提交</button>
+</div>

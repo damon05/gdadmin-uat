@@ -1,0 +1,66 @@
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label>学号：</label>
+        <input type="text" placeholder="学号" class="width150" ng-model="StudentNo" />
+
+    </div>
+    <div class="left mr15">
+        <label>手机号：</label>
+        <input type="text" placeholder="手机号" class="width150" ng-model="Mobile" />
+    </div>
+    <div class="left mr15">
+        <label>姓名：</label>
+        <input type="text" placeholder="姓名" class="width150" ng-model="StudentName" />
+    </div>
+    <div class="left mr15">
+        <label>身份：</label>
+        <select class="width140" ng-model="Identity" ng-options="m.code as m.name for m in wxStatus"></select>
+    </div>
+    <div class="left">
+        <button class="btnGreen ml65" ng-click="search();">查询</button>
+    </div>
+</div>
+
+<div class="grayLine"></div>
+
+<table class="tableBox" border="1">
+    <thead>
+    <tr>    
+        <th>会员账号</th>
+        <th>状态</th>
+        <th>学号</th>
+        <th>手机号</th>
+        <th>姓名</th>
+        <th>身份</th>
+        <th>学豆</th>
+        <th>学校</th>
+        <th>注册时间</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="item in List">
+        <td style="word-wrap:break-word;" width="10%">{{item.OpenID}}</td>
+        <td style="word-wrap:break-word;" width="5%" ng-if="item.Status==0">正常</td>
+        <td style="word-wrap:break-word;" width="5%" ng-if="item.Status==1">禁用</td>
+        <td style="word-wrap:break-word;" width="10%">{{item.StudentNo}}</td>
+        <td style="word-wrap:break-word;" width="10%">{{item.Mobile}}</td>
+        <td style="word-wrap:break-word;" width="5%">{{item.StudentName}}</td>
+        <td style="word-wrap:break-word;" width="5%" ng-if="item.Identity==0">爸爸</td>
+        <td style="word-wrap:break-word;" width="5%" ng-if="item.Identity==1">妈妈</td>
+        <td style="word-wrap:break-word;" width="5%" ng-if="item.Identity==null"></td>  
+        <td style="word-wrap:break-word;" width="10%">{{item.Studybean}}</td>
+        <td style="word-wrap:break-word;" width="15%">{{item.SchoolName}}</td>
+        <td style="word-wrap:break-word;" width="10%">{{item.RegisterTime}}</td>
+        <td style="word-wrap:break-word;" width="10%">
+            <button ng-click="create(item);" style="width:50px;">添加学号</button>
+        </td>
+</tr>
+    </tbody>
+</table>
+
+<div class="pagingContainer clearfix">
+    <paging get-url="getUrl" callback-fn="directiveCallBack"></paging>
+</div>

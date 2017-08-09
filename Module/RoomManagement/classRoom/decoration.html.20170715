@@ -1,0 +1,104 @@
+
+<div class="navigation">我的应用 > 教室管理 > 课程系列 & 图标装修</div>
+
+<div class="searchRow clearfix">
+    <div class="left mr15">
+        <label>教室选择：</label>
+        <select class="width287" ng-model="classListNum" ng-options="m.code as m.name for m in classList"></select>
+    </div>
+    <div class="left">
+        <button class="btnGreen ml65" ng-click="searchLists()">查询</button>
+    </div>
+</div>
+
+<div class="classRoomBigContainer" style="width: 278px">装修课程系列图标</div>
+<div class="flex">
+    <div class="flex_1">
+        <div class="decoration_info_box clearfix">
+            <div class="decoration_top_tip">提醒：装修图标的位置</div>
+            <table class="tableBox" border="1">
+                <thead>
+                <tr>
+                    <th>安全教室</th>
+                    <th>课程系列</th>
+                    <th>当前图标</th>
+                    <th>更换图标</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="item in listXl">
+                        <td>{{className}}</td>
+                        <td>{{item.kcxlmc}}</td>
+                        <td><a target="_blank" href="{{item.kctp}}">查看图标</a></td>
+                        <td class="pr">
+                            <input type="text" ng-model="item.newPath" class="width100 h24"/>
+                            <input id="xl_btn_{{$index}}" type="file" class="input_file" ng-click="getImgXl(item,'xl_btn_'+$index);"/>
+                            <span contenteditable="true" ng-bind="" ng-show="false"></span>
+                            <button>选择</button>
+                            <button ng-click="loadImgXl(item);">上传</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="pagingContainer">
+                <paging get-url="getUrlXl" callback-fn="directiveCallBackXl"></paging>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="decoration_img_box">
+        <img src="resource/images/class_icon_xilie.png"/>
+    </div>
+</div>
+
+<div class="classRoomBigContainer" style="width: 278px">装修课程图标</div>
+<div class="flex">
+    <div class="flex_1">
+        <div class="decoration_info_box clearfix">
+            <div class="decoration_top_tip">提醒：装修图标的位置</div>
+            <table class="tableBox" border="1">
+                <thead>
+                <tr>
+                    <th>商品名称</th>
+                    <th>课程系列</th>
+                    <th>课程名称</th>
+                    <th>当前课程图标</th>
+                    <th>更换图标</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="item in listKc">
+                        <td>课程</td>
+                        <td>{{item.kcxlmc}}</td>
+                        <td>课程系列</td>
+                        <td><a target="_blank" href="{{item.kctp}}">查看图标</a></td>
+                        <td class="pr">
+                            <input type="text" ng-model="item.newPath" class="width100 h24"/>
+                            <input id="kc_btn_{{$index}}" type="file" class="input_file" ng-click="getImgKc(item,'kc_btn_'+$index);"/>
+                            <span contenteditable="true" ng-bind="" ng-show="false"></span>
+                            <button>选择</button>
+                            <button ng-click="loadImgKc(item);">上传</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="pagingContainer">
+                <paging get-url="getUrlKc" callback-fn="directiveCallBackKc"></paging>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="decoration_img_box">
+        <img src="resource/images/class_icon_one_kecheng.png"/>
+    </div>
+</div>
+
+
+
+

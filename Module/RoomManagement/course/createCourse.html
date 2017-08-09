@@ -1,0 +1,121 @@
+<div class="navigation">我的应用 > 妈妈微课管理 > {{t_title}}</div>
+<div class="tabList" ng-show="true">
+    <ul>
+        <li ng-class="{ 'tabList_hover' : data.current == 1 }" ng-click="actions.setCurrent(1)">课程信息</li>
+        <li ng-class="{ 'tabList_hover' : data.current == 2 }" ng-click="actions.setCurrent(2)">课程评论信息</li>
+        <li ng-class="{ 'tabList_hover' : data.current == 3 }" ng-click="actions.setCurrent(3)">听课会员</li>
+    </ul>
+</div>
+<div ng-show="data.current == 1">
+    <div class="searchRow clearfix">
+        <div class="left">
+            <label>课程编码： {{ID}}</label>
+
+        </div>
+    </div>
+    <div class="searchRow clearfix">
+        <div class="left">
+            <label>课程名称：</label>
+            <input type="text" maxlength="60" class="width200" ng-model="CourseName" />
+        </div>
+    </div>
+    <div class="searchRow clearfix">
+        <div class="left">
+            <label>课程分类：</label>
+            <select class="width287" ng-model="CategoryID" ng-options="m.code as m.name for m in wxCourseCategory"></select>
+        </div>
+    </div>
+    <div class="searchRow clearfix">
+        <div class="left">
+            <label>课程教师：</label>
+            <select class="width287" ng-model="TeacherID" ng-options="m.code as m.name for m in wxWeiTeacher"></select>
+        </div>
+    </div>
+    <div class="searchRow clearfix">
+
+        <div class="left mr15">
+            <label>课程简介：</label>            
+            <textarea name="Intro" cols="60" rows="2" ng-model="Intro" maxlength="2000"></textarea>
+        </div>
+    </div>
+    <div class="searchRow clearfix" style="min-height:30px;">
+        <div class="left mr15">
+            <label>微课列表图片：</label>
+            <button class="nextBtn mr15 ml14 pr" id="btnUploadThumbnail">
+                上传文件
+                <input type="file" class="inputFile" name="file1" id="file1" />
+            </button>
+            <span ng-show="showImg"><a target="_blank" href="{{Image}}">查看</a></span>
+            <span class="red1" ng-bind="r2"></span>
+            <span contenteditable="true" ng-show="false" ng-bind="Image"></span>
+            <span>尺寸800*500, 大小500kb</span>
+        </div>
+    </div>
+    <div class="searchRow clearfix">
+        <div class="left">
+            <label>媒体类型：</label>
+            <select class="width287" ng-model="Restype" ng-options="m.code as m.name for m in wxQuestionResType"></select>
+        </div>
+    </div>
+
+    <div class="searchRow clearfix" ng-show="Restype==0" style="min-height:30px;">
+
+        <div class="left">
+            <label style="vertical-align:top;">内容：</label>
+            <textarea name="content" cols="60" rows="2" ng-model="Content"></textarea>
+        </div>
+    </div>
+
+    <div class="searchRow clearfix" ng-show="Restype==2||Restype==3" style="min-height:30px;">
+
+        <div class="left mr15">
+            <label>资源地址：</label>
+            <input type="text" maxlength="2000" class="width200" ng-model="ResURL" />
+        </div>
+    </div>
+
+    <div class="searchRow clearfix" ng-show="Restype==1" style="min-height:30px;">
+        <div class="left mr15">
+            <label>图片详细：</label>
+            <button class="nextBtn mr15 ml14 pr" id="btnUploadImg">
+                上传文件
+                <input type="file" class="inputFile" name="file1" id="file1" />
+            </button>
+            <span ng-show="showImg"><a target="_blank" href="{{ResURL}}">查看</a></span>
+            <span class="red1" ng-bind="r1"></span>
+            <span contenteditable="true" ng-show="false" ng-bind="ResURL"></span>
+            <span>尺寸800*不限长度, 大小1000kb</span>
+        </div>
+    </div>
+
+    <div class="searchRow clearfix" style="min-height:30px;">
+        <div class="left">
+            <div class="left"><label>课程级别：</label></div>
+            <div data-ng-repeat="tag in wxCourseLevel" class="left">
+                <input type="checkbox" id={{tag.code}} name="{{tag.code}}" ng-checked="isSelected('level',tag.code)" ng-click="updateSelection('level',$event,tag.code)">
+                {{ tag.name }}
+            </div>
+        </div>
+    </div>
+
+    <div class="searchRow clearfix" style="min-height:30px;">
+        <div class="left">
+            <div class="left"><label>课程标签：</label></div>
+            <div data-ng-repeat="tag in wxCourseLabel" class="left">
+                <input type="checkbox" id={{tag.code}} name="{{tag.code}}" ng-checked="isSelected('label',tag.code.toString())" ng-click="updateSelection('label',$event,tag.code.toString())">
+                {{ tag.name }}
+            </div>
+        </div>
+    </div>
+    
+    <div class="mt10" ng-show="showButton">
+        <button class="btnGreen" ng-click="createCourse();">保存提交</button>
+    </div>
+</div>
+
+<div ng-if="data.current == 2">
+    <course-comment-list show-add-btn="{show:true}" show-ck="{show:false}" choose-callback="getSelClass"></course-comment-list>
+</div>
+<div ng-if="data.current == 3">
+    <course-learn-list show-add-btn="{show:true}" show-ck="{show:false}" choose-callback="getSelClass"></course-learn-list>
+</div>
