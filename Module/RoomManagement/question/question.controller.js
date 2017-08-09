@@ -11,7 +11,7 @@ angular.module('app')
         $scope.ResourceURL = "";
         $scope.showQuestionItem = false;
         $scope.questionID = $stateParams.entity.questionID;
-        $scope.HomeworkID = $stateParams.entity.homeworkID;
+        $scope.CourseCode = $stateParams.entity.homeworkID;
         $scope.wxQuestionType = enume.wxQuestionType;
         $scope.wxQuestionResType = enume.wxQuestionResType;
         $scope.showImg = false;
@@ -78,16 +78,16 @@ angular.module('app')
 
         $scope.backToHomework = function () {
             if ($stateParams.entity.tag == "detail") {
-                $state.go("roomManage.homeworkCreate", { entity: { tag: "detailQuestion", homeworkID: $scope.HomeworkID, homeworkType: $scope.homeworkType,Type: $scope.hType } });
+                $state.go("roomManage.homeworkCreate", { entity: { tag: "detailQuestion", homeworkID: $stateParams.entity.homeworkID, homeworkType: $scope.homeworkType, Type: $scope.hType } });
             }
             else {
-                $state.go("roomManage.homeworkCreate", { entity: { tag: "addQuestion", homeworkID: $scope.HomeworkID, homeworkType: $scope.homeworkType, Type: $scope.hType } });
+                $state.go("roomManage.homeworkCreate", { entity: { tag: "addQuestion", homeworkID: $stateParams.entity.homeworkID, homeworkType: $scope.homeworkType, Type: $scope.hType } });
             }
         }
         $scope.createQuestion = function () {
 
             var tmp = {
-                HomeworkID: $scope.HomeworkID,
+                CourseCode: $scope.CourseCode,
                 Title: $scope.Title,
                 Code: $scope.Code,
                 Score: $scope.Score,
@@ -119,7 +119,7 @@ angular.module('app')
             enume.postData(url, tmp, function (d) {
                 if ($stateParams.entity.tag == "add") {
                     alert("保存成功！");
-                    $state.go("roomManage.questionCreate", { entity: { tag: "edit", questionID: d, homeworkType: $scope.homeworkType, hType: $scope.hType } });
+                    $state.go("roomManage.questionCreate", { entity: { tag: "edit", questionID: d, homeworkID: $stateParams.entity.homeworkID, homeworkType: $scope.homeworkType, hType: $scope.hType } });
                 }
                 else
                 {

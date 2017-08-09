@@ -47,12 +47,12 @@ angular.module("app").directive("homeworkList",function(){
 
             $scope.edit = function (item) {
                 $scope.showButton = true;
-                $state.go("roomManage.homeworkCreate", { entity: { tag: "edit", homeworkID: item.ID, homeworkType: item.HomeworkType, Type: item.Type } });
+                $state.go("roomManage.homeworkCreate", { entity: { tag: "edit", homeworkID: item.CourseCode, homeworkType: item.HomeworkType, Type: item.Type } });
             }
 
             $scope.detail = function (item) {
                 $scope.showButton = true;
-                $state.go("roomManage.homeworkCreate", { entity: { tag: "detail", homeworkID: item.ID, homeworkType: item.HomeworkType, Type: item.Type } });
+                $state.go("roomManage.homeworkCreate", { entity: { tag: "detail", homeworkID: item.CourseCode, homeworkType: item.HomeworkType, Type: item.Type } });
             }
 
             $scope.publish = function (item) {

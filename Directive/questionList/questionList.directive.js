@@ -5,13 +5,14 @@
 
 angular.module("app").directive("questionList",function(){
     return {
-        templateUrl: "./Directive/questionList/questionList.html?v=1332",
+        templateUrl: "./Directive/questionList/questionList.html?v=1349",
         restrict:"EA",
         scope:{
             "chooseCallback":"=",
             "showAddBtn":"=",
             "showCk":"=",
-            "from":"="
+            "from": "=",
+            "courseTitle":"="
         },
         link:function(){},
         controller: function ($http, $scope, enume, $state, $rootScope, $stateParams, ngDialog) {
@@ -19,7 +20,7 @@ angular.module("app").directive("questionList",function(){
             //初始化下拉框数据  模板分类,模板类型
             $scope.homeworkID = $stateParams.entity.homeworkID;
             $scope.Title = "";
-            $scope.CourseTitle = "";
+            //$scope.CourseTitle = "";
             $scope.statusID = -1;
             $scope.homeworkType = $stateParams.entity.homeworkType;
             $scope.Type = $stateParams.entity.Type;
@@ -37,7 +38,7 @@ angular.module("app").directive("questionList",function(){
             }
 
             $scope.getUrl = function () {
-                return srvDomain + "/Question/Index?homeworkID=" + $scope.homeworkID;
+                return srvDomain + "/Question/Index?courseCode=" + $scope.homeworkID;
             }
             //查询考卷题目列表          
             $scope.$broadcast("searchByFilter");
@@ -50,12 +51,12 @@ angular.module("app").directive("questionList",function(){
 
             $scope.edit = function (item) {
                 $scope.showButton = true;
-                $state.go("roomManage.questionCreate", { entity: { tag: "edit", questionID: item.ID, homeworkID: item.HomeworkID, homeworkType: $scope.homeworkType, hType: $scope.Type } });
+                $state.go("roomManage.questionCreate", { entity: { tag: "edit", questionID: item.ID, homeworkID: $scope.homeworkID, homeworkType: $scope.homeworkType, hType: $scope.Type } });
             }
 
             $scope.detail = function (item) {
                 $scope.showButton = false;
-                $state.go("roomManage.questionCreate", { entity: { tag: "detail", questionID: item.ID, homeworkID: item.HomeworkID, homeworkType: $scope.homeworkType, hType: $scope.Type } });
+                $state.go("roomManage.questionCreate", { entity: { tag: "detail", questionID: item.ID, homeworkID: $scope.homeworkID, homeworkType: $scope.homeworkType, hType: $scope.Type } });
             }
 
             $scope.delete = function (item) {

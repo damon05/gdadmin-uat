@@ -1,60 +1,10 @@
-<div class="navigation">我的应用 > {{TypeName}}管理 > {{t_title}}</div>
+<div class="navigation">我的应用 > 题库管理 > 题库维护</div>
 
-<div class="tabList" >
-    <ul>
-        <li ng-class="{ 'tabList_hover' : data.current == 1 }" ng-click="actions.setCurrent(1)">{{TypeName}}基本信息</li>
-        <li ng-class="{ 'tabList_hover' : data.current == 2 }" ng-click="actions.setCurrent(2)">{{TypeName}}完成信息</li>     
-    </ul>
-</div>
-<div class="clearfix" style="min-height:300px;" ng-show="data.current == 1">
-    <div ng-show="!showQuestion">
-        <div>
-            <table width="70%" style="margin:5px auto;">                
-                <tbody style="text-align:left">
-                    <tr><td style="width:120px;" align="center"><img src="resource/images/u4.png" /></td><td align="center"  style="width:120px;"><img src="resource/images/u7_line.png" /></td><td style="width:60px;" align="center"><img src="resource/images/u7.png" /></td></tr>
-                    <tr><td style="width:120px;" align="center">维护{{TypeName}}基本信息</td><td></td><td style="width:120px;" align="center">维护{{TypeName}}内容信息</td></tr>
-                </tbody>
-            </table>
-        </div>
-        <div style="margin-top:20px;font-size:18px;font-weight:bold;">{{TypeName}}基本信息</div>
-        <div class="searchRow clearfix">
-            <div class="left">
-                <label>{{TypeName}}编码：{{ID}}</label>
-            </div>
-        </div>
-        <div class="searchRow clearfix" ng-show="homeworkType==0">
-            <div class="left">
-                <label>课程编码：{{KCBH}}</label>
-            </div>
-        </div>
-        <div class="searchRow clearfix">
-            <div class="left">
-                <label>{{TypeName}}标题：</label>
-                <input type="text" maxlength="200" class="width200" ng-model="Title" />
-            </div>
-        </div>
-        <div class="searchRow clearfix">
-            <div class="left">
-                <label>考试类别：</label>
-                <select class="width200" ng-model="CategoryID" ng-options="m.code as m.name for m in wxExamCategory"></select>
-            </div>
-        </div>            
-    </div>    
-    <question-list ng-show="showQuestion" show-ck="{show:false}" show-add-btn="showButton" from="{val:'safe'}"></question-list>
-    <div  style="margin-top:60px;text-align:center;">
-        <div class="mt10 clearfix" style="min-height:20px;height:20px;" ng-show="!showQuestion">
-            <button class="btnGreen" ng-show="showButton" ng-click="createHomework();">保存提交</button><button class="btnGreen" style="margin-left:10px;width:150px;" ng-click="gotoStepTwo();">下一步(维护{{TypeName}}内容)</button>
-        </div>
 
-        <div class="mt10 clearfix" style="min-height:20px;height:20px;" ng-show="showQuestion">
-            <button class="btnGreen" style="width:150px;" ng-show="showButton" ng-click="gotoStepOne();">上一步({{TypeName}}基本信息)</button><button class="btnGreen" style="margin-left:10px;width:150px;" ng-click="backToHomeworkList();">完成({{TypeName}})</button>
-        </div>
-    </div>
+   
+    <question-list show-ck="{show:false}" show-add-btn="showButton" from="{val:'safe'}" course-title="CourseTitle"></question-list>
+   
 
-</div>
 
-<div ng-if="data.current == 2" style="min-height:300px;">
-    <member-homework-list></member-homework-list>
-</div>
 
 

@@ -15,7 +15,7 @@ angular.module('app')
         $scope.wxHomeworkScoreRule = enume.wxHomeworkScoreRule;
         $scope.TypeName = "";
         $scope.wxExamCategory = enume.wxExamCategory;
-        $scope.CategoryID = "";
+        $scope.CategoryID = "";        
 
         if ($scope.Type == "0") {
             $scope.TypeName = "考卷";
@@ -24,20 +24,20 @@ angular.module('app')
             $scope.TypeName = "问卷";
         }
 
-        $scope.data = {
-            current: "1" // 1代表考卷基本信息，2代表考卷完成信息
-        };
+        //$scope.data = {
+        //    current: "1" // 1代表考卷基本信息，2代表考卷完成信息
+        //};
 
-        $scope.actions =
-            {
-                setCurrent: function (param) {
-                    $scope.data.current = param;
-                }
-            }
+        //$scope.actions =
+        //    {
+        //        setCurrent: function (param) {
+        //            $scope.data.current = param;
+        //        }
+        //    }
 
         function getInfoByCode() {
             var id = $stateParams.entity.homeworkID;
-            enume.getData(srvDomain + "/Homework/Update?ID=" + id, function (item) {
+            enume.getData(srvDomain + "/Homework/Update?courseCode=" + id, function (item) {
                 $scope.ID = item.ID;
                 $scope.SchoolID = item.SchoolID;
                 $scope.teachingCode = item.TeachingCode;
@@ -52,7 +52,12 @@ angular.module('app')
                 $scope.ModifyBy = item.ModifyBy;
                 $scope.ModifyTime = item.ModifyTime;
                 $scope.CategoryID = item.CategoryID;
-            })
+                $scope.CourseTitle = item.CourseTitle;
+
+            });
+
+            enume.getData(srvDomain + "/Homework/Update?courseCode=" + id, function (item) {
+            });
         }
 
         $scope.showButton = true;
@@ -83,29 +88,29 @@ angular.module('app')
             $scope.showButton = true;
         }
 
-        $scope.gotoStepTwo = function () {
-            // $state.go("roomManage.homeworkCreate", { entity: { tag: "edit", homeworkID: item.ID, Type: $scope.Type } });
-            if ($scope.ID == "") {
-                alert("请先保存考卷基本信息！");
-            }
-            else {
-                $scope.showQuestion = true;
-            }
-        }
+        //$scope.gotoStepTwo = function () {
+        //    // $state.go("roomManage.homeworkCreate", { entity: { tag: "edit", homeworkID: item.ID, Type: $scope.Type } });
+        //    if ($scope.ID == "") {
+        //        alert("请先保存考卷基本信息！");
+        //    }
+        //    else {
+        //        $scope.showQuestion = true;
+        //    }
+        //}
 
-        $scope.gotoStepOne = function () {
-            // $state.go("roomManage.homeworkCreate", { entity: { tag: "edit", homeworkID: item.ID, Type: $scope.Type } });
-            $scope.showQuestion = false;
-        }
+        //$scope.gotoStepOne = function () {
+        //    // $state.go("roomManage.homeworkCreate", { entity: { tag: "edit", homeworkID: item.ID, Type: $scope.Type } });
+        //    $scope.showQuestion = false;
+        //}
 
-        $scope.backToHomeworkList = function () {            
-            if ($scope.Type == "0") {
-                $state.go("roomManage.homeworkList", { entity: { Type: $scope.Type } });
-            }
-            else {
-                $state.go("roomManage.investigateList", { entity: { Type: $scope.Type } });
-            }
-        }
+        //$scope.backToHomeworkList = function () {            
+        //    if ($scope.Type == "0") {
+        //        $state.go("roomManage.homeworkList", { entity: { Type: $scope.Type } });
+        //    }
+        //    else {
+        //        $state.go("roomManage.investigateList", { entity: { Type: $scope.Type } });
+        //    }
+        //}
 
         $scope.createHomework = function () {
 
