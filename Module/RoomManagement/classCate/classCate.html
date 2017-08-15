@@ -1,0 +1,23 @@
+<div class="navigation">我的应用 > 考卷管理 > 课程系列</div>
+
+<ul id="ztree"  class="ztree"></ul>
+
+<div>
+    <input type="button" value="新增" ng-click="add()" />
+    <input type="button" value="修改" ng-click="edit()">
+    <input type="button" value="删除" ng-click="del()">
+</div>
+
+<div>
+    <h3>详情</h3>
+    编号:<input type="text" ng-model="kcxlbh" /><br/>
+    名称:<input type="text" ng-model="kcxlmc" /><br/>
+    图片: <input type="file" name="file" id="upimg" /> <img style="width: 50px;height: 50px;" ng-src={{kctp}} /><br/>
+    父编号:<input type="text" ng-model="parentbh" readonly /><br/>
+    题目个数:<input type="text" ng-model="tmCount" /><br/>
+</div>
+
+<div>
+    <input type="button" value="提交" ng-click="sub()" />
+</div>
+

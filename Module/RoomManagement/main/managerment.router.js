@@ -322,4 +322,10 @@ angular.module('app').config(function($stateProvider){
             templateUrl: "./Module/RoomManagement/scoreRule/createScoreRule.html",
             controller: 'createScoreRuleCtl'
         })
+        .state('roomManage.classCate', {
+            url: '/classCate',
+            params: { entity: {} },
+            templateUrl: "./Module/RoomManagement/classCate/classCate.html",
+            controller: 'classCateCtl'
+        })
 });
